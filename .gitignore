@@ -1,0 +1,5 @@
+checkpoint/
+exampledata/
+data/
+*.zip
+*.pth

@@ -1,0 +1,17 @@
+imageio==2.33.0
+opencv-python==4.5.3.56
+pandas==2.0.3
+Pillow==8.3.1
+protobuf==3.17.3
+pycm==3.2
+pydicom==2.3.0
+scikit-image==0.17.2
+scikit-learn==0.24.2
+scipy==1.5.4
+tensorboard==2.14.0
+tensorboard-data-server==0.6.1
+tensorboard-plugin-wit==1.8.0
+timm==0.3.2
+tqdm==4.62.1
+gradio==3.40.0
+grad-cam==1.4.8
