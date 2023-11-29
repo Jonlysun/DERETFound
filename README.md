@@ -25,7 +25,7 @@ We provide a live demo for DERETFound at [http://fdudml.cn:12001/](http://fdudml
 
 1. Download the pre-training and fine-tuning model
 
-You can download the finetuned models and the examples of DERETFound from [here](). Then, you can unzip the file and put the folder `exampledata` and `checkpoint` in the root directory of DERETFound.
+You can download the finetuned models from [here]() and the examples of DERETFound from [here](https://github.com/Jonlysun/DERETFound/releases/tag/data). Then, you can unzip the file and put the folder `exampledata` and `checkpoint` in the root directory of DERETFound.
     
 ```
 exampledata/
@@ -104,7 +104,7 @@ data/
         val.pkl
         test.pkl
 ```
-If you want to follow the same split in our paper, you can download '.pkl' files from [here](). Also, you may need to post-process these files with your own path.
+If you want to follow the same split in our paper, you can download '.pkl' files from [here](https://github.com/Jonlysun/DERETFound/releases/tag/data). Also, you may need to post-process these files with your own path.
 
 ### 2. Evaluation
 You can use the following command or run the 'bash main_evaluation.sh'. Please remember replace the root path with your own dataset path
