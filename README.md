@@ -6,6 +6,7 @@ This is the official repo for DERETFound, which is based on [MAE](https://github
 
 ## News
 - [x] Release the code of DERETFound
+- [ ] Release the pre-training model and fine-tuning models of DERETFound
 - [ ] Release the code of retinal-image diffusion model
 - [ ] Provide the Online demo for retinal-image diffusion
 
@@ -25,7 +26,7 @@ We provide a live demo for DERETFound at [http://fdudml.cn:12001/](http://fdudml
 
 1. Download the pre-training and fine-tuning model
 
-You can download the finetuned models from [here]() and the examples of DERETFound from [here](https://github.com/Jonlysun/DERETFound/releases/tag/data). Then, you can unzip the file and put the folder `exampledata` and `checkpoint` in the root directory of DERETFound.
+You can download the pre-training model and fine-tuning models from [here]() and the examples of DERETFound from [here](https://github.com/Jonlysun/DERETFound/releases/tag/data). Then, you can unzip the file and put the folder `exampledata` and `checkpoint` in the root directory of DERETFound.
     
 ```
 exampledata/
@@ -144,7 +145,7 @@ python -m torch.distributed.launch --nproc_per_node=1 --master_port=40003 main_f
 ```
 
 ## Pre-Training
-You can use the following command or run the 'bash main_pretrain.sh'. Please remember replace the root path with your own dataset path
+You can use the following command or run the 'bash main_pretrain.sh'. Please remember replace the root path with your own dataset path. You can download the `mae_pretrain_vit_large.pth` from the official repo of [MAE](https://github.com/facebookresearch/mae).
 ```
 IMAGE_DIR='YOUR_IMAGE_DIR'
 python -m torch.distributed.launch --nproc_per_node=8 main_pretrain.py \
