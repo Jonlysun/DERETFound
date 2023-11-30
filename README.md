@@ -26,7 +26,7 @@ We provide a live demo for DERETFound at [http://fdudml.cn:12001/](http://fdudml
 
 1. Download the pre-training and fine-tuning model
 
-You can download the pre-training model and fine-tuning models from [here]() and the examples of DERETFound from [here](https://github.com/Jonlysun/DERETFound/releases/tag/data). Then, you can unzip the file and put the folder `exampledata` and `checkpoint` in the root directory of DERETFound.
+You can download the pre-training model and fine-tuning models from [baiduDisk code:7n7v ](https://pan.baidu.com/s/1TBVNlaR9xW_rqA8ZdrRuOg) and the example images from [here](https://github.com/Jonlysun/DERETFound/releases/tag/data). Then, you can unzip the file and put the folder `exampledata` and `checkpoint` in the root directory of DERETFound.
     
 ```
 exampledata/
