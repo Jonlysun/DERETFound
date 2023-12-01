@@ -165,8 +165,6 @@ python -m torch.distributed.launch --nproc_per_node=8 --master_port=48797 main_p
     --task './DERETFound/' \
     --output_dir './DERETFound_log/' \
     --resume ./mae_pretrain_vit_large.pth \
-    --master_port 10001 \
-
 ```
 
 
