@@ -1,5 +1,5 @@
 IMAGENET_DIR=YOUR_OWN_PATH
-python -m torch.distributed.launch --nproc_per_node=1 main_pretrain.py \
+python -m torch.distributed.launch --nproc_per_node=8 --master_port=48797 main_pretrain.py \
     --batch_size 224 \
     --model mae_vit_large_patch16 \
     --norm_pix_loss \
@@ -10,5 +10,5 @@ python -m torch.distributed.launch --nproc_per_node=1 main_pretrain.py \
     --data_path $IMAGENET_DIR \
     --task './DERETFound/' \
     --output_dir './DERETFound_log/' \
-    # --resume ./mae_pretrain_vit_large.pth \
+    --resume ./mae_pretrain_vit_large.pth \
 

@@ -26,7 +26,7 @@ We provide a live demo for DERETFound at [http://fdudml.cn:12001/](http://fdudml
 
 1. Download the pre-training and fine-tuning model
 
-You can download the pre-training model and fine-tuning models from [baiduDisk code:7n7v ](https://pan.baidu.com/s/1TBVNlaR9xW_rqA8ZdrRuOg) and the example images from [here](https://github.com/Jonlysun/DERETFound/releases/tag/data). Then, you can unzip the file and put the folder `exampledata` and `checkpoint` in the root directory of DERETFound.
+You can download the pre-training model and fine-tuning models from [baiduDisk code:7n7v ](https://pan.baidu.com/s/1TBVNlaR9xW_rqA8ZdrRuOg) and the example images named exampledata.zip from [here](https://github.com/Jonlysun/DERETFound/releases/tag/data). Then, you can unzip the file and put the folder `exampledata` and `checkpoint` in the root directory of DERETFound.
     
 ```
 exampledata/
@@ -67,6 +67,11 @@ git clone https://github.com/Jonlysun/DERETFound/
 cd DERETFound
 pip install -r requirement.txt
 ```
+If you have the following error:
+```
+ImportError: cannot import name 'container_abcs' from 'torch._six' 
+```
+please refer to the solution in [here](https://github.com/huggingface/pytorch-image-models/issues/420).
 
 ## Offline Demo
 ### User Interface for DERETFound
@@ -105,7 +110,7 @@ data/
         val.pkl
         test.pkl
 ```
-If you want to follow the same split in our paper, you can download '.pkl' files from [here](https://github.com/Jonlysun/DERETFound/releases/tag/data). Also, you may need to post-process these files with your own path.
+If you want to follow the same split in our paper, you can download '.pkl' files from [here](https://github.com/Jonlysun/DERETFound/releases/tag/data) and put `data` in root directory. Also, you may need to post-process these files with your own path and replace the `train_data_dir` in main_finetune.py with your own path. 
 
 ### 2. Evaluation
 You can use the following command or run the 'bash main_evaluation.sh'. Please remember replace the root path with your own dataset path
@@ -148,7 +153,7 @@ python -m torch.distributed.launch --nproc_per_node=1 --master_port=40003 main_f
 You can use the following command or run the 'bash main_pretrain.sh'. Please remember replace the root path with your own dataset path. You can download the `mae_pretrain_vit_large.pth` from the official repo of [MAE](https://github.com/facebookresearch/mae).
 ```
 IMAGE_DIR='YOUR_IMAGE_DIR'
-python -m torch.distributed.launch --nproc_per_node=8 main_pretrain.py \
+python -m torch.distributed.launch --nproc_per_node=8 --master_port=48797 main_pretrain.py \
     --batch_size 224 \
     --model mae_vit_large_patch16 \
     --norm_pix_loss \
@@ -160,6 +165,10 @@ python -m torch.distributed.launch --nproc_per_node=8 main_pretrain.py \
     --task './DERETFound/' \
     --output_dir './DERETFound_log/' \
     --resume ./mae_pretrain_vit_large.pth \
+    --master_port 10001 \
 
 ```
+
+
+
 Please contact 	**sunyuqi387@gmail.com** if you have questions.
