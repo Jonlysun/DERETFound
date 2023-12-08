@@ -6,9 +6,7 @@ This is the official repo for DERETFound, which is based on [MAE](https://github
 
 ## News
 - [x] Release the code of DERETFound
-- [ ] Release the pre-training model and fine-tuning models of DERETFound
-- [ ] Release the code of retinal-image diffusion model
-- [ ] Provide the Online demo for retinal-image diffusion
+- [x] Release the pre-training model and fine-tuning models of DERETFound
 
 ## Key features
 
@@ -26,7 +24,7 @@ We provide a live demo for DERETFound at [http://fdudml.cn:12001/](http://fdudml
 
 1. Download the pre-training and fine-tuning model
 
-You can download the pre-training model and fine-tuning models from [baiduDisk code:7n7v ](https://pan.baidu.com/s/1TBVNlaR9xW_rqA8ZdrRuOg) and the example images named exampledata.zip from [here](https://github.com/Jonlysun/DERETFound/releases/tag/data). Then, you can unzip the file and put the folder `exampledata` and `checkpoint` in the root directory of DERETFound.
+You can download the pre-training model and fine-tuning models from [Zenodo](https://zenodo.org/records/10253561) or [baiduDisk code:7n7v ](https://pan.baidu.com/s/1TBVNlaR9xW_rqA8ZdrRuOg) and the example images named exampledata.zip from [here](https://github.com/Jonlysun/DERETFound/releases/tag/data). Then, you can unzip the file and put the folder `exampledata` and `checkpoint` in the root directory of DERETFound.
     
 ```
 exampledata/
