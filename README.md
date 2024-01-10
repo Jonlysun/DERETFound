@@ -1,4 +1,4 @@
-# DERETFound - Generative Model Enables Ultra-High Data Efficiency for Building Generalist Medical Foundation Model
+# DERETFound - Expertise-informed Generative Model Enables Ultra-High Data Efficiency for Building Generalist Medical Foundation Model
 
 DERETFound is a medical foundation model from retinal images that enables ultra-high data efficiency. 
 
