@@ -1,5 +1,8 @@
 checkpoint/
 exampledata/
 data/
+RetinaDiffusion/
+sd_app.py
+images/dml.png
 *.zip
 *.pth
