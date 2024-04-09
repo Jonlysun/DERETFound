@@ -434,27 +434,31 @@ def run_mae(img_input, device, progress=gr.Progress()):
     return [mae_result]
 
 with gr.Blocks() as demo:
+    gr.Markdown("<div align='center' ><font size='10' face='Arial'>Online Demo for RETFound-DE</font></div>")  
+    gr.Markdown("<font size=4 face='Arial'>This demo allows you to run the models on your own images.</font> ")
+    gr.Markdown("<font size=4 face='Arial'>We show three features of RETFound-DE: \
+                 **MAE reconstructed images**,  **diagnostic probability** and **interpretable heatmaps**. </font> ")
+    gr.Markdown("<font size=4 face='Arial'>We provide brief instructions below to introduce how to use this online demo, please refer to [Tutorial](https://github.com/Jonlysun/DERETFound/blob/master/README_tutorial.md) if you expect a detailed tutorial.</font> ")
 
-    gr.Markdown("# Online Demo for DERETFound")
-    gr.Markdown("This demo allows you to run the models on your own images. Given an image and chose eye detection task, we show the  \
-                 **MAE reconstructed images**,  **diagnostic probability** and **interpretable heatmaps**. Please refer to the paper for more details.")
-    gr.Markdown("## Instructions")
-    gr.Markdown("1. Upload your image or use the examples below. We accept colour fundus photography images.")
-    gr.Markdown("2. Click 'Check Input' to inspect your input image.")    
-    gr.Markdown("3. If you want to see the MAE reconstructed image by our pre-training model, please click 'Run' in 'Load and Run Pre-Training model'. This may take a while to display the image.")    
-    gr.Markdown("4. If you want to see the diagnostic probability and interpretable heatmaps, select the model type in 'Load and Run Fine-tuning Model. We provide models for different tasks and datasets, including:")
-    gr.Markdown("$\qquad$- diabetic retinopathy grading (Kaggle APTOS-2019, IDRiD, MESSIDOR2)") 
-    gr.Markdown("$\qquad$- glaucoma diagnosis (PAPILA, Glaucoma Fundus, ORIGA)") 
-    gr.Markdown("$\qquad$- Age-related macular degeneration grading (AREDS)") 
-    gr.Markdown("$\qquad$- Multi-diseases classification (Retina, JSIEC)")                 
-    gr.Markdown("5. Click 'Load Model' to load the model. This may take a while.")
-    gr.Markdown("6. Click 'Run' to run the model on the input image. Some tasks like denoising will take several minutes to run.")
+    gr.Markdown("<div align='left' ><font size='6' face='Arial'>Instructions</font></div>")
+    gr.Markdown("<font size=4 face='Arial'> 1. Upload your own image or use the examples we have provided below (click the image name to select). We only accept colour fundus photography images for now.</font>")
+    gr.Markdown("<font size=4 face='Arial'> 2. Click 'Check Input' to inspect your input image.</font>")    
+    gr.Markdown("<font size=4 face='Arial'> 3. **MAE reconstructed images:**</font>")    
+    gr.Markdown("<font size=4 face='Arial'> $\qquad\qquad$ Click **Run** in **Load and Run Pre-Training model**. This may take a while to display the image.</font>")    
+    gr.Markdown("<font size=4 face='Arial'> 4. **Diagnostic probability and interpretable heatmaps:**</font>")
+    gr.Markdown("<font size=4 face='Arial'> $\qquad\qquad$ A. Select the **Model Type** in **Load and Run Fine-tuning Model**. We provide models for different tasks and datasets, including:</font>")
+    gr.Markdown("<font size=4 face='Arial'> $\qquad\qquad\qquad$- diabetic retinopathy grading (Kaggle APTOS-2019, IDRiD, MESSIDOR2)</font>") 
+    gr.Markdown("<font size=4 face='Arial'> $\qquad\qquad\qquad$- glaucoma diagnosis (PAPILA, Glaucoma Fundus, ORIGA)</font>") 
+    gr.Markdown("<font size=4 face='Arial'> $\qquad\qquad\qquad$- Age-related macular degeneration grading (AREDS)</font>") 
+    gr.Markdown("<font size=4 face='Arial'> $\qquad\qquad\qquad$- Multi-diseases classification (Retina, JSIEC)</font>")                 
+    gr.Markdown("<font size=4 face='Arial'> $\qquad\qquad$ B. Click **Load Model** to load the model. This may take a while. </font>")
+    gr.Markdown("<font size=4 face='Arial'> $\qquad\qquad$ C. Click **Run** to run the model on the input image.</font>")
     
     gr.Markdown("Internet Content Provider ID: [沪ICP备2023024810号-1](https://beian.miit.gov.cn/)", rtl=True)
 
     with gr.Column():
         # with gr.Column():
-        gr.Markdown("## Upload Image")
+        gr.Markdown("<div align='left' ><font size='6' face='Arial'>Upload Image</font></div>")
             
         with gr.Column():
             img_input = gr.File(label="Input File", interactive=True)
@@ -505,14 +509,14 @@ with gr.Blocks() as demo:
                     examples=[
                         ["exampledata/Multi-disease/JSIEC-01.JPG","multi"],
                         ["exampledata/Multi-disease/JSIEC-02.JPG","multi"],
-                        ["exampledata/Multi-disease/Retina-01.png","multi"],
-                        ["exampledata/Multi-disease/Retina-02.png","multi"],
+                        ["exampledata/Multi-disease/Retina-01.jpg","multi"],
+                        ["exampledata/Multi-disease/Retina-02.jpg","multi"],
                     ],
                     inputs=[img_input, load_image],
                 )
 
     with gr.Column():
-        gr.Markdown("## Load and Run Pre-Training Model")
+        gr.Markdown("<div align='left' ><font size='6' face='Arial'>Load and Run Pre-Training Model</font></div>")
         # output_file = gr.File(label="Output File", interactive=False)
         img_mae = gr.Gallery(label="MAE Reconstructed image")
         
@@ -520,10 +524,10 @@ with gr.Blocks() as demo:
             device_1 = gr.Dropdown(label="Device", choices=DEVICES, value="CUDA")
             
         with gr.Row():
-            load_progress = gr.Textbox(label="Model Information", value="DERETFound")
+            load_progress = gr.Textbox(label="Model Information", value="RETFound-DE")
             mae_run_btn = gr.Button("Run")
 
-        gr.Markdown("## Load and Run Fine-tuning Model")
+        gr.Markdown("<div align='left' ><font size='6' face='Arial'>Load and Run Fine-tuning Model</font></div>")
         img_output = gr.Gallery(label="Classification  probability")
         img_heatmaps = gr.Gallery(label="Interpretable heatmaps")
 
@@ -544,4 +548,4 @@ with gr.Blocks() as demo:
     run_btn.click(run_model, inputs=[img_input, type], outputs=[img_output], queue=True)
     run_btn.click(run_cam, inputs=[img_input, type], outputs=[img_heatmaps], queue=True)
 
-demo.queue().launch(server_name='0.0.0.0', server_port=7891)
+demo.queue().launch(server_name='127.0.0.1', server_port=7891)
