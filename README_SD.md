@@ -12,7 +12,7 @@ We present the information and deployment of the retinal image stable diffusion 
 
 1. Download the stable diffusion v1.4 and ReSDv1.4 model
 
-You can download the stable diffusion v1.4 from [HuggingFace](https://huggingface.co/CompVis/stable-diffusion-v1-4) and ReSDv1.4 from [Zenodo:sd-retina-model](https://zenodo.org/records/10253561) or [baiduDisk code:7n7v](https://pan.baidu.com/s/1TBVNlaR9xW_rqA8ZdrRuOg).
+You can download the stable diffusion v1.4 from [HuggingFace](https://huggingface.co/CompVis/stable-diffusion-v1-4) and ReSDv1.4 from [Zenodo:sd-retina-model](https://zenodo.org/records/10947092) or [baiduDisk code:7n7v](https://pan.baidu.com/s/1TBVNlaR9xW_rqA8ZdrRuOg).
 
 
 2. Install Diffusers
@@ -28,8 +28,8 @@ Please note that the version of Diffusers may influence the deployment. In our e
     from diffusers import AutoencoderKL, StableDiffusionPipeline, UNet2DConditionModel
     from transformers import CLIPTextModel
     
-    my_model_path = "ReSDv1.4 path"
-    pre_trained_model = "stable diffusion v1.4 path"
+    my_model_path = "ReSDv1.4 path, e.g., /home/user/sd-retinal-model/checkpoint-60000/ " 
+    pre_trained_model = "stable diffusion v1.4 path, e.g., /home/user/stable-diffusion-v1-4 "
     text_encoder = CLIPTextModel.from_pretrained(pre_trained_model, subfolder="text_encoder")
     vae = AutoencoderKL.from_pretrained(pre_trained_model, subfolder="vae")
 

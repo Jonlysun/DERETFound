@@ -25,7 +25,7 @@ We provide a live demo for RETFound-DE at [http://fdudml.cn:12001/](http://fdudm
 
 1. Download the pre-training and fine-tuning model
 
-You can download the pre-training model and fine-tuning models from [Zenodo](https://zenodo.org/records/10253561) or [baiduDisk code:7n7v ](https://pan.baidu.com/s/1TBVNlaR9xW_rqA8ZdrRuOg) and the example images named exampledata.zip from [here](https://github.com/Jonlysun/RETFound-DE/releases/tag/data). Then, you can unzip the file and put the folder `exampledata` and `checkpoint` in the root directory of RETFound-DE.
+You can download the pre-training model and fine-tuning models from [Zenodo](https://zenodo.org/records/10947092) or [baiduDisk code:7n7v ](https://pan.baidu.com/s/1TBVNlaR9xW_rqA8ZdrRuOg) and the example images named exampledata.zip from [here](https://github.com/Jonlysun/RETFound-DE/releases/tag/data). Then, you can unzip the file and put the folder `exampledata` and `checkpoint` in the root directory of RETFound-DE.
     
 ```
 exampledata/
