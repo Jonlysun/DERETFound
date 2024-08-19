@@ -1,6 +1,6 @@
-# Controllable Generative Model Enables Ultra-High Data Efficiency for Building Generalist Medical Foundation Model
+# Controllable Generative Model Enables High Data Efficiency for Building Medical Foundation Model
 
-RETFound-DE is a medical foundation model from retinal images that enables ultra-high data efficiency. 
+RETFound-DE is a medical foundation model from retinal images that enables high data efficiency. 
 
 This is the official repo for RETFound-DE, which is based on [MAE](https://github.com/facebookresearch/mae) and [RETFound](https://github.com/rmaphoh/RETFound_MAE/tree/main) (Y. Zhou et al, Nature 2023):
 
