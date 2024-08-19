@@ -15,17 +15,17 @@ This is the official repo for RETFound-DE, which is based on [MAE](https://githu
 - **Excellent performance:** Extensive experiments on nine datasets across four ocular disease detection tasks demonstrate the excellent performance of RETFound-DE in improving the detection of eye diseases, label and fine-tuning time efficiency.
 - **Transferable:** RETFound-DE provides an effective solution for other diseases that were once discouraged from building foundation models due to limited data, which has profound significance for generalist medical AI.
 
-
+<!-- 
 ## Online Demo
 We provide a live demo for RETFound-DE at [http://fdudml.cn:12001/](http://fdudml.cn:12001/). You can also  employ the following steps to run the demo locally.
 
-![demo](./images/onlinedemo.png)
+![demo](./images/onlinedemo.png) -->
 
 ## Prepare the environment
 
 1. Download the pre-training and fine-tuning model
 
-You can download the pre-training model and fine-tuning models from [Zenodo](https://zenodo.org/records/10947092) or [baiduDisk code:7n7v ](https://pan.baidu.com/s/1TBVNlaR9xW_rqA8ZdrRuOg) and the example images named exampledata.zip from [here](https://github.com/Jonlysun/RETFound-DE/releases/tag/data). Then, you can unzip the file and put the folder `exampledata` and `checkpoint` in the root directory of RETFound-DE.
+You can download the pre-training model and fine-tuning models from [Zenodo](https://zenodo.org/records/13340936) or [baiduDisk code:7n7v ](https://pan.baidu.com/s/1TBVNlaR9xW_rqA8ZdrRuOg) and the example images named exampledata.zip from [here](https://drive.google.com/file/d/1f1Lmdtf1LELYpKpthEawastSJWXEWIWb/view?usp=drive_link). Then, you can unzip the file and put the folder `exampledata` and `checkpoint` in the root directory of RETFound-DE.
     
 ```
 exampledata/
@@ -47,7 +47,7 @@ checkpoint/
      PreTraining/
 ```
 
-2. Install enviroment
+1. Install enviroment
 
 Create enviroment with conda:
 
@@ -109,7 +109,7 @@ data/
         val.pkl
         test.pkl
 ```
-If you want to follow the same split in our paper, you can download '.pkl' files from [here](https://github.com/Jonlysun/RETFound-DE/releases/tag/data) and put `data` in root directory. Also, you may need to post-process these files with your own path and replace the `train_data_dir` in main_finetune.py with your own path. 
+If you want to follow the same split in our paper, you can download '.pkl' files from [here](https://drive.google.com/file/d/1lMYGntHw9H9XsPxelfNHTrZG4z5pqKo3/view?usp=drive_link) and put `data` in root directory. Also, you may need to post-process these files with your own path and replace the `train_data_dir` in main_finetune.py with your own path. 
 
 ### 2. Evaluation
 You can use the following command or run the 'bash main_evaluation.sh'. Please remember replace the root path with your own dataset path
@@ -168,6 +168,14 @@ python -m torch.distributed.launch --nproc_per_node=8 --master_port=48797 main_p
 
 ## Retinal Image Stable Diffusion Model
 For detailed information about the retinal diffusion model, please refer to README_SD.md
+
+
+## Additional results on Chest X-ray images
+Following our data-efficient framework, we conducted additional experiments on Chest X-ray (CXR) images to further demonstrate the potential of our framework in extending to other medical fileds. We present the pretrained CXR foundation model [here](https://zenodo.org/records/13340936) (ChestX_Pretraining.zip), which was pretrained on 20k real and 80k synthetic CXR images. 
+
+For downstream tasks, we provided two fine-tuned model [here](https://zenodo.org/records/13340936) (ChestX_Shenzhen.zip, ChestX_TBChest.zip) to show the performance of foundation model on Tuberculosis.
+
+Please follow the pipeline before and our paper to evaluate the performance on Chest X-ray images.
 
 
 Please contact 	**sunyuqi387@gmail.com** if you have questions.

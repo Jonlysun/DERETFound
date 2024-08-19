@@ -28,6 +28,7 @@ from util.datasets import build_dataset
 from util.data_DRGrading import APTOSDataset, IDRiDDataset, MESSIDOR2Dataset
 from util.data_Glaucoma import PAPILADataset, GFDataset, ORIGADataset
 from util.data_MultiDisease import JSIECDataset, RetinaDataset
+from util.data_Radiology import ShenzhenDataset, TBChestDataset
 from util.data_AMD import AMDDataset
 from util.pos_embed import interpolate_pos_embed
 from util.misc import NativeScalerWithGradNormCount as NativeScaler
@@ -153,7 +154,8 @@ def get_args_parser():
                         help='url used to set up distributed training')
 
     parser.add_argument('--dataset_name', default='DR_APTOS2019', type=str, choices=['DR_APTOS2019','DR_IDRID','DR_MESSIDOR2','Glaucoma_PAPILA', \
-                                                                              'Glaucoma_Glaucoma_Fundus','Glaucoma_ORIGA','AMD_AREDS','Multi_Retina', 'Multi_JSIEC'])
+                                                                              'Glaucoma_Glaucoma_Fundus','Glaucoma_ORIGA','AMD_AREDS','Multi_Retina', 'Multi_JSIEC', \
+                                                                                'CXR_Shenzhen', 'CXR_TBChest'])
     parser.add_argument('--data_ratio', default=100, type=int,
                         help='ratio of data to be used for training')
 
@@ -277,6 +279,32 @@ def main(args):
         dataset_test = RetinaDataset(data_dir=train_data_dir, label_path=test_label_path, data_type='test')
 
         args.nb_classes = 4
+
+    elif args.dataset_name == 'CXR_Shenzhen':
+        train_data_dir = args.root
+        train_label_path = 'data/RadiologyData/Shenzhen/train.pkl'
+        val_label_path = 'data/RadiologyData/Shenzhen/val.pkl'
+        test_label_path = 'data/RadiologyData/Shenzhen/test.pkl'
+        
+        # dataset_train = RetinaDataset(data_dir=train_data_dir, label_path=train_label_path, data_type='train',use_syn=True, syn_data_dir=syn_train_data_dir, syn_label_path=sys_train_label_path)
+        dataset_train = ShenzhenDataset(data_dir=train_data_dir, label_path=train_label_path, data_type='train', data_ratio=args.data_ratio)
+        dataset_val = ShenzhenDataset(data_dir=train_data_dir, label_path=val_label_path, data_type='val')
+        dataset_test = ShenzhenDataset(data_dir=train_data_dir, label_path=test_label_path, data_type='test')
+
+        args.nb_classes = 2
+    
+    elif args.dataset_name == 'CXR_TBChest':
+        train_data_dir = args.root
+        train_label_path = 'data/RadiologyData/TBChest/train.pkl'
+        val_label_path = 'data/RadiologyData/TBChest/val.pkl'
+        test_label_path = 'data/RadiologyData/TBChest/test.pkl'
+        
+        # dataset_train = RetinaDataset(data_dir=train_data_dir, label_path=train_label_path, data_type='train',use_syn=True, syn_data_dir=syn_train_data_dir, syn_label_path=sys_train_label_path)
+        dataset_train = TBChestDataset(data_dir=train_data_dir, label_path=train_label_path, data_type='train', data_ratio=args.data_ratio)
+        dataset_val = TBChestDataset(data_dir=train_data_dir, label_path=val_label_path, data_type='val')
+        dataset_test = TBChestDataset(data_dir=train_data_dir, label_path=test_label_path, data_type='test')
+
+        args.nb_classes = 2
     
     if True:  # args.distributed:
         num_tasks = misc.get_world_size()
